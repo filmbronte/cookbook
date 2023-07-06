@@ -4,8 +4,6 @@ window.addEventListener('load', () => {
     const mainPage = document.getElementById('main-page');
     const p = document.querySelector('p');
 
-    p.remove();
-
     fetch(url)
         .then(res => res.json())
         .then(data => getData(data))
@@ -13,6 +11,7 @@ window.addEventListener('load', () => {
 
     function getData(data) {
         Object.values(data).forEach((el) => {
+            p.remove();
             const newArticle = document.createElement('article');
             newArticle.setAttribute('class', 'preview');
 
@@ -99,15 +98,15 @@ window.addEventListener('load', () => {
             //     }
             // })
 
-            newArticle.addEventListener('click', getRecipe)
+            // newArticle.addEventListener('click', getRecipe)
         })
     }
 
-    function getRecipe(e) {
-        if (e.target.classList.contains('preview')) {
-            e.target.removeAttribute('class');
+    // function getRecipe(e) {
+    //     if (e.target.classList.contains('preview')) {
+    //         e.target.removeAttribute('class');
 
 
-        }
-    }
+    //     }
+    // }
 })
