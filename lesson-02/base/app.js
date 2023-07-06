@@ -31,9 +31,9 @@ window.addEventListener('load', () => {
             div2.setAttribute('class', 'small');
             newArticle.appendChild(div2);
 
-            // const img = document.createElement('img');
-            // img.setAttribute('src', el.img);
-            // div2.appendChild(img)
+            const img = document.createElement('img');
+            img.setAttribute('src', el.img);
+            div2.appendChild(img)
         })
     }
 })
