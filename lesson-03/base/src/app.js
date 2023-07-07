@@ -51,19 +51,20 @@ window.addEventListener('load', async () => {
     const guestNav = document.getElementById('guest');
     const userNav = document.getElementById('user');
 
-    // TODO: log out function
-
-    
-    // const logOut = document.getElementById('logoutBtn');
-
-    logOut.addEventListener('click', logOut)
-
     if (localStorage.getItem('accessToken') == null) {
         guestNav.style.display = 'inline';
         userNav.style.display = 'none';
     } else {
         guestNav.style.display = 'none';
         userNav.style.display = 'inline';
+
+        const logOut = document.getElementById('logoutBtn');
+
+        logOut.addEventListener('click', async () => {
+            localStorage.clear();
+
+            location = 'index.html';
+        })
     }
 
     const recipes = await getRecipes();
@@ -73,12 +74,6 @@ window.addEventListener('load', async () => {
     cards.forEach(c => main.appendChild(c));
 
 });
-
-function logOut() {
-    localStorage.clear();
-
-    location = 'index.html';
-}
 
 function e(type, attributes, ...content) {
     const result = document.createElement(type);
