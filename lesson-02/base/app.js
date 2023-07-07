@@ -47,6 +47,12 @@ function createPreview(recipe) {
             </div>`;
 
     element.addEventListener('click', () => {
+        element.innerHTML = `<div class="title">
+        <h2>Loading...</h2>
+        </div>
+        <div class="small">
+            <img src="${recipe.img}">
+        </div>`;
         togglePreview(recipe._id, element);
     })
 
