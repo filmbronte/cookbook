@@ -7,7 +7,32 @@ async function start() {
 
     recipes.map(createPreview).forEach(el => main.appendChild(el));
 
-    p.remove()
+    p.remove();
+}
+
+async function togglePreview(id, preview) {
+    const recipe = await getRecipeById(id);
+
+    const element = document.createElement('article');
+
+    element.innerHTML = `<h2>${recipe.name}</h2>
+    <div class="band">
+        <div class="thumb">
+            <img src="${recipe.img}">
+        </div>
+        <div class="ingredients">
+            <h3>Ingredients:</h3>
+            <ul>
+                ${recipe.ingredients.map(i => `<li>${i}</li>`).join('')}
+            </ul>
+        </div>
+    </div>
+    <div class="description">
+        <h3>Preparation:</h3>
+        ${recipe.steps.map(p => `<p>${p}</p>`).join('')}
+    </div>`;
+
+    preview.replaceWith(element);
 }
 
 function createPreview(recipe) {
@@ -20,6 +45,10 @@ function createPreview(recipe) {
             <div class="small">
                 <img src="${recipe.img}">
             </div>`;
+
+    element.addEventListener('click', () => {
+        togglePreview(recipe._id, element);
+    })
 
     return element;
 }
@@ -46,6 +75,6 @@ async function getRecipeById(id) {
 
         return data;
     } catch (err) {
-        alert(err.message)
+        alert(err.message);
     }
 }
