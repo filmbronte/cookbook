@@ -43,6 +43,7 @@ async function submitRecipe(e) {
     return result, newrecipe;
 }
 
+// TODO: fix eventlistener on click
 async function createRecipe(name, img) {
     const url = 'http://localhost:3030/jsonstore/cookbook/recipes';
 
