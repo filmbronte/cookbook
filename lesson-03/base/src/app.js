@@ -75,7 +75,8 @@ function createPreview(recipe) {
 }
 
 async function getRecipes() {
-    const url = 'http://localhost:3030/jsonstore/cookbook/recipes'
+    //http://localhost:3030/data/recipes?select=_id%2Cname%2Cimg
+    const url = 'http://localhost:3030/data/recipes?select=_id%2Cname%2Cimg';
 
     const res = await fetch(url);
     const data = await res.json();
@@ -84,7 +85,7 @@ async function getRecipes() {
 }
 
 async function getRecipeById(id) {
-    const url = 'http://localhost:3030/jsonstore/cookbook/details/' + id;
+    const url = 'http://localhost:3030/data/recipes/' + id;
 
     try {
         const res = await fetch(url);

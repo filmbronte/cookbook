@@ -17,13 +17,6 @@ async function submitRecipe(e) {
     let ingredients = formData.get('ingredients').split('\n');
     let steps = formData.get('steps').split('\n');
 
-    let data = {
-        name,
-        img,
-        ingredients,
-        steps
-    };
-
     const token = localStorage.getItem('accessToken');
 
     const res = await fetch('http://localhost:3030/data/recipes', {
@@ -32,18 +25,17 @@ async function submitRecipe(e) {
             'Content-Type': 'application/json',
             'X-Authorization': token
         },
-        'body': JSON.stringify({ data })
+        'body': JSON.stringify({ name, img, ingredients, steps })
     });
 
     const result = await res.json();
 
-    const newrecipe = await createRecipe(data.name, data.img);
+    const newrecipe = await createRecipe(name, img);
 
     location = 'index.html'
     return result, newrecipe;
 }
 
-// TODO: fix eventlistener on click
 async function createRecipe(name, img) {
     const url = 'http://localhost:3030/jsonstore/cookbook/recipes';
 
