@@ -1,10 +1,4 @@
 export async function register() {
-
-    document.getElementById('create-button').removeAttribute('class');
-    document.getElementById('register-button').setAttribute('class', 'active');
-    document.getElementById('login-button').removeAttribute('class');
-    document.getElementById('catalog-button').removeAttribute('class');
-
     document.getElementById('recipes-page').style.display = 'none';
     document.getElementById('register-article').style.display = 'block';
     document.getElementById('log-in-article').style.display = 'none';
