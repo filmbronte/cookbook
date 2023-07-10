@@ -27,7 +27,12 @@ function createRecipePreview(recipe) {
     async function toggleCard() {
         const fullRecipe = await getRecipeById(recipe._id);
 
-        result.replaceWith(createRecipeCard(fullRecipe));
+
+        document.getElementById('catalog-button').removeAttribute('class');
+
+        document.getElementById('recipes-page').style.display = 'none';
+        document.getElementById('details-page').style.display = 'block';
+        document.getElementById('details-page').replaceChildren(createRecipeCard(fullRecipe));
     }
 }
 
@@ -65,7 +70,9 @@ window.addEventListener('load', async () => {
 
     const main = document.querySelector('main');
 
+
     const catalogBtn = document.getElementById('catalog-button');
+    catalogBtn.setAttribute('class', 'active');
     const createBtn = document.getElementById('create-button');
     const loginBtn = document.getElementById('login-button');
     const registerBtn = document.getElementById('register-button');
@@ -90,6 +97,7 @@ async function catalog() {
 
 
     document.getElementById('recipes-page').style.display = 'block';
+    document.getElementById('details-page').style.display = 'none';
     document.getElementById('register-article').style.display = 'none';
     document.getElementById('log-in-article').style.display = 'none';
     document.getElementById('create-recipe-article').style.display = 'none';

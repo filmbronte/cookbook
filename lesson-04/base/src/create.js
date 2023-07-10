@@ -8,6 +8,8 @@ export async function create() {
 
     document.getElementById('recipes-page').style.display = 'none';
     document.getElementById('register-article').style.display = 'none';
+
+    document.getElementById('details-page').style.display = 'none';
     document.getElementById('log-in-article').style.display = 'none';
     document.getElementById('create-recipe-article').style.display = 'block';
 

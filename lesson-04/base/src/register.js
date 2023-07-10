@@ -8,6 +8,8 @@ export async function register() {
     document.getElementById('recipes-page').style.display = 'none';
     document.getElementById('register-article').style.display = 'block';
     document.getElementById('log-in-article').style.display = 'none';
+
+    document.getElementById('details-page').style.display = 'none';
     document.getElementById('create-recipe-article').style.display = 'none';
 
     const form = document.getElementById('register-form');
