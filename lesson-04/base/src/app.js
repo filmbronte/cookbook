@@ -48,8 +48,10 @@ function createRecipeCard(recipe) {
         ),
         e('div', { className: 'description' },
             e('h3', {}, 'Preparation:'),
-            recipe.steps.map(s => e('p', {}, s))
-        ),
+            recipe.steps.map(s => e('p', {}, s)),
+            e('button', { className: 'edit' }, 'Edit'),
+            e('button', { className: 'delete' }, 'Delete')
+        )
     );
 
     return result;
