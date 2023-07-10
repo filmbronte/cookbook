@@ -1,5 +1,11 @@
 
 export async function create() {
+
+    document.getElementById('create-button').setAttribute('class', 'active');
+    document.getElementById('register-button').removeAttribute('class');
+    document.getElementById('login-button').removeAttribute('class');
+    document.getElementById('catalog-button').removeAttribute('class');
+
     document.getElementById('recipes-page').style.display = 'none';
     document.getElementById('register-article').style.display = 'none';
     document.getElementById('log-in-article').style.display = 'none';

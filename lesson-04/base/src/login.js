@@ -1,5 +1,11 @@
 
 export async function login() {
+
+    document.getElementById('create-button').removeAttribute('class');
+    document.getElementById('register-button').removeAttribute('class');
+    document.getElementById('login-button').setAttribute('class', 'active');
+    document.getElementById('catalog-button').removeAttribute('class');
+
     document.getElementById('recipes-page').style.display = 'none';
     document.getElementById('register-article').style.display = 'none';
     document.getElementById('log-in-article').style.display = 'block';
