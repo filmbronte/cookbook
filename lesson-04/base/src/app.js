@@ -73,6 +73,7 @@ window.addEventListener('load', async () => {
     loginBtn.addEventListener('click', login)
     createBtn.addEventListener('click', create)
     registerBtn.addEventListener('click', register)
+    catalogBtn.addEventListener('click', catalog)
 
     const recipes = await getRecipes();
     const cards = recipes.map(createRecipePreview);
@@ -80,6 +81,19 @@ window.addEventListener('load', async () => {
     main.innerHTML = '';
     cards.forEach(c => main.appendChild(c));
 });
+
+async function catalog() {
+    document.getElementById('create-button').removeAttribute('class');
+    document.getElementById('register-button').removeAttribute('class');
+    document.getElementById('login-button').removeAttribute('class');
+    document.getElementById('catalog-button').setAttribute('class', 'active');
+
+
+    document.getElementById('recipes-page').style.display = 'block';
+    document.getElementById('register-article').style.display = 'none';
+    document.getElementById('log-in-article').style.display = 'none';
+    document.getElementById('create-recipe-article').style.display = 'none';
+}
 
 function e(type, attributes, ...content) {
     const result = document.createElement(type);
