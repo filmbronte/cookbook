@@ -1,3 +1,7 @@
+import { login } from "./login.js";
+import { create } from "./create.js";
+import { register } from "./register.js";
+
 async function getRecipes() {
     const response = await fetch('http://localhost:3030/data/recipes');
     const recipes = await response.json();
@@ -47,29 +51,28 @@ function createRecipeCard(recipe) {
 }
 
 async function logout() {
-    const response = await fetch('http://localhost:3030/users/logout', {
-        method: 'get',
-        headers: {
-            'X-Authorization': sessionStorage.getItem('authToken')
-        },
-    });
-    if (response.status == 200) {
-        sessionStorage.removeItem('authToken');
-        window.location.pathname = 'index.html';
-    } else {
-        console.error(await response.json());
-    }
+    localStorage.clear();
+    window.location.pathname = 'index.html';
 }
 
 window.addEventListener('load', async () => {
-    if (sessionStorage.getItem('authToken') != null) {
-        document.getElementById('user').style.display = 'inline-block';
-        document.getElementById('logoutBtn').addEventListener('click', logout);
+    if (localStorage.getItem('authToken') == null) {
+        document.getElementById('guest').style.display = 'inline';
     } else {
-        document.getElementById('guest').style.display = 'inline-block';
+        document.getElementById('user').style.display = 'inline';
+        document.getElementById('logoutBtn').addEventListener('click', logout);
     }
 
     const main = document.querySelector('main');
+
+    const catalogBtn = document.getElementById('catalog-button');
+    const createBtn = document.getElementById('create-button');
+    const loginBtn = document.getElementById('login-button');
+    const registerBtn = document.getElementById('register-button');
+
+    loginBtn.addEventListener('click', login)
+    createBtn.addEventListener('click', create)
+    registerBtn.addEventListener('click', register)
 
     const recipes = await getRecipes();
     const cards = recipes.map(createRecipePreview);
